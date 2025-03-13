@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+        .message {
+            text-align: center;
+            font-weight: bold;
+            color: green;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .add-question {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .add-question:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Question Management</h2>
+
+        <!-- Display success message if available -->
+        <div class="message" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+        <!-- Questions Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Correct Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="question : ${questions}">
+                    <td th:text="${question.questionText}"></td>
+                    <td th:text="${question.option1}"></td>
+                    <td th:text="${question.option2}"></td>
+                    <td th:text="${question.option3}"></td>
+                    <td th:text="${question.option4}"></td>
+                    <td th:text="${question.correctOption}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Add Question Link -->
+        <a class="add-question" th:href="@{/addQuestion}">Add a New Question</a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+<!--  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question Management</title>
+</head>
+<body>
+    <h2>Question Management</h2>
+
+    
+    <div th:if="${successMessage}">
+        <p style="color: green;" th:text="${successMessage}"></p>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Option 3</th>
+                <th>Option 4</th>
+                <th>Correct Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="question : ${questions}">
+                <td th:text="${question.questionText}"></td>
+                <td th:text="${question.option1}"></td>
+                <td th:text="${question.option2}"></td>
+                <td th:text="${question.option3}"></td>
+                <td th:text="${question.option4}"></td>
+                <td th:text="${question.correctOption}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/addQuestion}">Add a New Question</a>
+</body>
+</html> -->
